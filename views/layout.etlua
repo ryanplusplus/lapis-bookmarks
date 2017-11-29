@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="static/tether.min.css">
+  <link rel="stylesheet" href="static/bootstrap.min.css">
+  <script src="static/tether.min.js"></script>
+  <script src="static/jquery.min.js"></script>
+  <script src="static/bootstrap.min.js"></script>
+  <title><%= page_title or "Bookmarks" %></title>
+</head>
+<body>
+  <% content_for("inner") %>
+</body>
+</html>
