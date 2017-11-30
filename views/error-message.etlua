@@ -1,0 +1,6 @@
+<% if error_message then %>
+  <div class="alert alert-danger alert-dismissable">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <%= error_message %>
+  </div>
+<% end %>

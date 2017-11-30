@@ -1,0 +1,24 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>URL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for i, bookmark in pairs(bookmarks) do %>
+      <tr>
+        <td class="col-1"><%= i %></td>
+        <td class="col-5"><%= bookmark.name %></td>
+        <td class="col-5"><a href="<%= bookmark.url %>"><%= bookmark.url %></a></td>
+        <td class="col-1">
+          <form action="/delete" method="post">
+            <input name="id" type="hidden" value="<%= bookmark.id %>">
+            <button type="submit" class="btn btn-danger">x</button>
+          </form>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

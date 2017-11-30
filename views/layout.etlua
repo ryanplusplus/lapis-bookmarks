@@ -7,7 +7,7 @@
   <script src="static/tether.min.js"></script>
   <script src="static/jquery.min.js"></script>
   <script src="static/bootstrap.min.js"></script>
-  <title><%= page_title or "Bookmarks" %></title>
+  <title><%= page_title or "Bookmark Depot" %></title>
 </head>
 <body>
   <% content_for("inner") %>

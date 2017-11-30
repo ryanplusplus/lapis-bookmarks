@@ -31,13 +31,20 @@ app:post('/add', capture_errors({
 
   function(self)
     validate.assert_valid(self.params, {
-      { 'name', exists = true, type = 'String', min_length = 2 },
-      { 'url', exists = true, type = 'String', min_length = 2 }
+      { 'name', exists = true, 'A name must be provided for the bookmark' },
+      { 'url', exists = true, 'A URL must be provided for the bookmark' }
     })
     bookmarks:create(self.params)
     return { redirect_to = self:url_for('view') }
   end
 }))
+
+app:post('/delete', function(self)
+  if self.params.id then
+    bookmarks:find(self.params.id):delete()
+  end
+  return { redirect_to = self:url_for('view') }
+end)
 
 app:post('/delete/:id', function(self)
   bookmarks:find(self.params.id):delete()
