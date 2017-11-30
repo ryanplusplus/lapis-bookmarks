@@ -1,42 +1,52 @@
-<h1 class="text-center">Bookmarks</h1>
-<table class="table">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Name</th>
-      <th>URL</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% for _, bookmark in pairs(bookmarks) do %>
+<div class="container">
+  <h1 class="text-center">Bookmarks</h1>
+
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= bookmark.id %></td>
-        <td><%= bookmark.name %></td>
-        <td><%= bookmark.url %></td>
+        <th>#</th>
+        <th>Name</th>
+        <th>URL</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% for _, bookmark in pairs(bookmarks) do %>
+        <tr>
+          <td><%= bookmark.id %></td>
+          <td><%= bookmark.name %></td>
+          <td><%= bookmark.url %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<form id="new-bookmark-form" action="/add" method="post">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-5 col-md-5 col-sm-5">
-        <div class="input-group">
-          <span class="input-group-addon">Name</span>
-          <input type="text" id="name" name="name" class="form-control" placeholder="My cool bookmark" />
+  <% if error_message then %>
+    <div class="alert alert-danger alert-dismissable">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <%= error_message %>
+    </div>
+  <% end %>
+
+  <form id="new-bookmark-form" action="/add" method="post">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-5 col-md-5 col-sm-5">
+          <div class="input-group">
+            <span class="input-group-addon">Name</span>
+            <input type="text" id="name" name="name" class="form-control" placeholder="My cool bookmark" />
+          </div>
         </div>
-      </div>
 
-      <div class="col-lg-6 col-md-6 col-sm-6">
-        <div class="input-group">
-          <span class="input-group-addon">URL</span>
-          <input type="text" id="url" name="url" class="form-control" placeholder="http://cool-site.net" />
+        <div class="col-lg-6 col-md-6 col-sm-6">
+          <div class="input-group">
+            <span class="input-group-addon">URL</span>
+            <input type="text" id="url" name="url" class="form-control" placeholder="http://cool-site.net" />
+          </div>
         </div>
-      </div>
 
-      <div class="col-lg-1 col-md-1 col-sm-1">
-        <button type="submit" class="btn btn-default">Add</button>
+        <div class="col-lg-1 col-md-1 col-sm-1">
+          <button type="submit" class="btn btn-default">Add</button>
+        </div>
       </div>
     </div>
   </div>
