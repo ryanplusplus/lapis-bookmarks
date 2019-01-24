@@ -3,6 +3,7 @@ Simple bookmarks web application using Lapis
 
 ## Install
 ```shell
+sudo apt install libssl-dev
 lenv install-lj 2.0.5
 lenv use-lj 2.0.5
 luarocks install lrt
