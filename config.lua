@@ -4,7 +4,8 @@ config({ 'development', 'production' }, {
   postgres = {
     password = 'awesome',
     database = 'lapis'
-  }
+  },
+  server = 'cqueues'
 })
 
 config('development', {
