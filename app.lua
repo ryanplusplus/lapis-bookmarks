@@ -9,6 +9,24 @@ app.layout = require 'views.layout'
 
 local bookmarks = Model:extend('bookmarks')
 
+local function serve_static(self, path)
+  local f = io.open(path, 'r')
+  if f then
+    local content = f:read('*all')
+    f:close()
+    return { content, layout = false, content_type = 'text' }
+  end
+  return { status = 404 }
+end
+
+app:get('/favicon.ico', function(self)
+  return serve_static(self, 'static/favicon.ico')
+end)
+
+app:get('/static/*', function(self)
+  return serve_static(self, self.req.parsed_url.path:sub(2))
+end)
+
 app:get('index', '/', function(self)
   return { redirect_to = self:url_for('view') }
 end)
